@@ -1,4 +1,4 @@
-/*! Raven.js 1.1.16 (463f68f) | github.com/getsentry/raven-js */
+/*! Raven.js 1.1.17 (992730c) | github.com/getsentry/raven-js */
 
 /*
  * Includes TraceKit
@@ -1117,7 +1117,7 @@ var _Raven = window.Raven,
  * @this {Raven}
  */
 var Raven = {
-    VERSION: '1.1.16',
+    VERSION: '1.1.17',
 
     debug: true,
 
@@ -1371,6 +1371,15 @@ var Raven = {
     },
 
     /*
+     * Get user to be sent along with the payload.
+     *
+     * @return {object}
+     */
+    getUserContext: function() {
+      return globalUser;
+    },
+
+    /*
      * Set extra attributes to be sent along with the payload.
      *
      * @param {object} extra An object representing extra data [optional]
@@ -1383,6 +1392,15 @@ var Raven = {
     },
 
     /*
+     * Get extra attributes to be sent along with the payload.
+     *
+     * @return {object}
+     */
+    getExtraContext: function() {
+      return globalOptions.extra;
+    },
+
+    /*
      * Set tags to be sent along with the payload.
      *
      * @param {object} tags An object representing tags [optional]
@@ -1392,6 +1410,15 @@ var Raven = {
        globalOptions.tags = tags || {};
 
        return Raven;
+    },
+
+    /*
+     * Get tags to be sent along with the payload.
+     *
+     * @return {object}
+     */
+    getTagsContext: function() {
+      return globalOptions.tags;
     },
 
     /*
